@@ -35,7 +35,7 @@ This software is provided as a "Many-to-Many" file conversion proof-of-concept.
 ## 🔓 Free & Unlimited
 
 **100% Free to Use**
-This project is fully open-source and released under the **General Public License (GPLv3)**.
+This project is fully open-source and released under the **General Public License **.
 * **No Cost:** Completely free for personal and commercial use.
 * **No Subscriptions:** No hidden fees, paywalls, or "premium" tiers.
 * **No Ads:** A clean, distraction-free interface.
