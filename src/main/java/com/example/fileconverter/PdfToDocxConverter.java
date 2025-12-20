@@ -18,13 +18,11 @@ public class PdfToDocxConverter implements FileConverter {
 
         // read pdf
         try (PDDocument pdfDocument = Loader.loadPDF(source)) {
-
-
             PDFTextStripper stripper = new PDFTextStripper();
-            String textContent = stripper.getText(pdfDocument);
+            String textContent  = stripper.getText(pdfDocument);
 
             // word document creation
-            try (XWPFDocument wordDocument = new XWPFDocument()) {
+            try(XWPFDocument wordDocument = new XWPFDocument()) {
                 XWPFParagraph paragraph = wordDocument.createParagraph();
                 XWPFRun run = paragraph.createRun();
 

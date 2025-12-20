@@ -10,7 +10,7 @@ public class ImageToPdfConverter implements FileConverter {
     @Override
     public void convert(File source, String destinationPath) throws Exception {
         try (PDDocument doc = new PDDocument()) {
-            PDPage page = new PDPage(PDRectangle.A4);
+            PDPage page = new  PDPage(PDRectangle.A4);
             doc.addPage(page);
             PDImageXObject pdImage = PDImageXObject.createFromFile(source.getAbsolutePath(), doc);
             try (PDPageContentStream contentStream = new PDPageContentStream(doc, page)) {

@@ -22,15 +22,16 @@ public class ConverterFactory {
         }
         if(src.equals("pdf") && IMAGE_FORMATS.contains(tgt)) {
             return new PdfToImageConverter();
-
         }
         if (src.equals("pdf") && tgt.equals("docx")) {
             return new PdfToDocxConverter();
         }
+        if (src.equals("docx") && tgt.equals("pdf")) {
+            return new DocxToPdfConverter();
+        }
         if(src.equals("txt") && tgt.equals("txt")) {
             return new TxtToUpperCaseConverter();
         }
-
 
         throw new IllegalArgumentException("Conversion not supported: " + src + " to " + tgt);
     }

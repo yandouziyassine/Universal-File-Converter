@@ -6,7 +6,6 @@
     <title>Universal File Converter - Professional Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* (Gardez le même style qu'avant, je copie juste l'essentiel pour économiser de la place) */
         :root { --primary-color: #6c5ce7; --bg-color: #f8f9fa; --text-dark: #2d3436; --white: #ffffff; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-dark); display: flex; flex-direction: column; min-height: 100vh; }
@@ -17,7 +16,6 @@
 
         main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; }
         .converter-card { background: var(--white); width: 100%; max-width: 650px; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(108, 92, 231, 0.15); }
-
         .drop-zone { border: 2px dashed #dfe6e9; border-radius: 8px; padding: 30px; text-align: center; cursor: pointer; transition: all 0.3s ease; background-color: #fafafa; margin-bottom: 30px; }
         .drop-zone:hover, .drop-zone.dragover { border-color: var(--primary-color); background-color: rgba(108, 92, 231, 0.05); }
         .drop-icon { font-size: 2.5rem; margin-bottom: 10px; }
@@ -32,17 +30,16 @@
 
         footer { text-align: center; padding: 20px; color: #636e72; font-size: 0.8rem; background: white; margin-top: auto;}
 
-        /* --- LOADING SPINNER & MESSAGE --- */
         .loading-container {
             margin-top: 20px;
             text-align: center;
-            display: none; /* Caché par défaut */
+            display: none;
             animation: fadeIn 0.5s;
         }
 
         .spinner {
-            border: 4px solid #f3f3f3; /* Gris clair */
-            border-top: 4px solid var(--primary-color); /* Violet */
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
             border-radius: 50%;
             width: 30px;
             height: 30px;
@@ -50,22 +47,10 @@
             margin: 0 auto 10px auto;
         }
 
-        .warning-text {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .warning-subtext {
-            color: #e17055; /* Une couleur un peu orange pour attirer l'attention */
-            font-size: 0.8rem;
-            margin-top: 5px;
-            display: block;
-        }
+        .warning-text { color: var(--text-light); font-size: 0.9rem; font-weight: 500; }
 
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
     </style>
 </head>
 <body>
@@ -80,22 +65,18 @@
 
 <main>
     <div style="text-align: center; margin-bottom: 30px;">
-        <h1 style="margin-bottom: 10px;">Batch File Conversion</h1>
-        <p style="color: #636e72;">Upload up to 15 files at once. Download as ZIP.</p>
+        <h1 style="margin-bottom: 10px;">Universal File Conversion</h1>
+        <p style="color: #636e72;">Convert your files easily.</p>
     </div>
 
     <div class="converter-card">
-        <form action="/api/convert" method="post" enctype="multipart/form-data" id="convertForm">
+        <form action="/api/files/convert" method="post" enctype="multipart/form-data" id="convertForm">
 
             <div class="drop-zone" id="dropZone">
                 <div class="drop-icon">📚</div>
-                <div class="drop-text" id="dropText">Drag multiple files here</div>
-                <input type="file" name="files" id="fileInput" multiple required>
+                <div class="drop-text" id="dropText">Drag your file here</div>
+                <input type="file" name="file" id="fileInput" required>
             </div>
-
-
-
-
 
             <div class="format-section">
                 <span style="font-weight:600; font-size:0.9rem;">Select Output Format:</span>
@@ -110,15 +91,14 @@
                     <button type="button" class="fmt-btn" data-value="tiff">TIFF</button>
                     <button type="button" class="fmt-btn" data-value="heic">HEIC</button>
                 </div>
-                <input type="hidden" name="format" id="hiddenFormatInput" required>
+                <input type="hidden" name="outputFormat" id="hiddenFormatInput" required>
             </div>
 
-            <button type="submit" class="btn-convert" id="submitBtn">Convert All Files</button>
+            <button type="submit" class="btn-convert" id="submitBtn">Convert File</button>
 
             <div class="loading-container" id="loadingMessage">
                 <div class="spinner"></div>
-                <p class="warning-text">Processing your files...</p>
-                <span class="warning-subtext">⚠️ For multiple files, download may take up to 30 seconds. Please do not refresh.</span>
+                <p class="warning-text">Processing your file...</p>
             </div>
         </form>
     </div>
@@ -127,24 +107,22 @@
 <footer>&copy; 2025 Universal File Converter Inc.</footer>
 
 <script>
-
     const dropZone = document.getElementById('dropZone');
     const fileInput = document.getElementById('fileInput');
     const dropText = document.getElementById('dropText');
     const submitBtn = document.getElementById('submitBtn');
     const hiddenInput = document.getElementById('hiddenFormatInput');
     const formatBtns = document.querySelectorAll('.fmt-btn');
+    const convertForm = document.getElementById('convertForm');
+    const loadingDiv = document.getElementById('loadingMessage');
 
-    // Click to upload
     dropZone.addEventListener('click', () => fileInput.click());
-
-    // Handle file selection
     fileInput.addEventListener('change', handleFiles);
 
-    // Drag & Drop events
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
         dropZone.addEventListener(eventName, (e) => { e.preventDefault(); e.stopPropagation(); }, false);
     });
+
     ['dragenter', 'dragover'].forEach(eventName => dropZone.classList.add('dragover'));
     ['dragleave', 'drop'].forEach(eventName => dropZone.classList.remove('dragover'));
 
@@ -156,23 +134,14 @@
         }
     });
 
-
     function handleFiles() {
         const files = fileInput.files;
-        if (files.length > 15) {
-            alert("Please select maximum 15 files.");
-            fileInput.value = ""; // Reset
-            dropText.innerText = "Drag multiple files here";
-            submitBtn.classList.remove('active');
-            return;
-        }
-
         if (files.length > 0) {
-            // Affiche le nombre de fichiers
-            dropText.innerHTML = `<span style='color:var(--primary-color)'>${files.length} files selected</span>`;
+            dropText.innerHTML = `<span style='color:var(--primary-color)'><b>${files[0].name}</b> ready</span>`;
             checkFormValidity();
         }
     }
+
     formatBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             formatBtns.forEach(b => b.classList.remove('selected'));
@@ -187,15 +156,51 @@
             submitBtn.classList.add('active');
         }
     }
-    const convertForm = document.getElementById('convertForm');
-    const loadingDiv = document.getElementById('loadingMessage');
 
-    convertForm.addEventListener('submit', () => {
+    convertForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
         loadingDiv.style.display = 'block';
-        submitBtn.innerText = "Conversion in progress...";
+        submitBtn.innerText = "Converting...";
         submitBtn.style.opacity = "0.7";
+        submitBtn.style.pointerEvents = "none";
 
+        const formData = new FormData(convertForm);
 
+        fetch('/api/files/convert', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) throw new Error("Server Error");
+                return response.blob();
+            })
+            .then(blob => {
+                const downloadUrl = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = downloadUrl;
+
+                const format = hiddenInput.value;
+                const originalName = fileInput.files[0].name;
+                const nameWithoutExt = originalName.substring(0, originalName.lastIndexOf('.')) || originalName;
+
+                a.download = `${nameWithoutExt}_converted.${format}`;
+
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(downloadUrl);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Error during conversion. Check if the backend supports this specific format conversion.");
+            })
+            .finally(() => {
+                loadingDiv.style.display = 'none';
+                submitBtn.innerText = "Convert File";
+                submitBtn.style.opacity = "1";
+                submitBtn.style.pointerEvents = "all";
+            });
     });
 </script>
 </body>

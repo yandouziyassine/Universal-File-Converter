@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+
 public class PdfToImageConverter implements FileConverter {
     @Override
     public void convert(File source, String destinationPath) throws Exception {
@@ -14,7 +15,10 @@ public class PdfToImageConverter implements FileConverter {
             PDFRenderer pdfRenderer = new PDFRenderer(document);
             BufferedImage bim = pdfRenderer.renderImageWithDPI(0, 300, ImageType.RGB);
             String formatName = destinationPath.substring(destinationPath.lastIndexOf(".") + 1);
+
             ImageIO.write(bim, formatName, new File(destinationPath));
         }
     }
+
+
 }
