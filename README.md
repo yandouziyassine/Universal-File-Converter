@@ -19,7 +19,7 @@ You can try the application directly in your browser without installing anything
 
 **Operational Constraints:**
 To ensure optimal performance and server stability, please adhere to the following limits:
-* **Maximum File Size:** 1 GB per file.
+* **Maximum File Size:** 1 GB per upload.
 * **Batch Processing:** Maximum of 15 files per upload request.
 
 **Please Read Carefully:**
@@ -31,6 +31,15 @@ This software is provided as a "Many-to-Many" file conversion proof-of-concept.
 
 **THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.**
 
+---
+## 🔓 Free & Unlimited
+
+**100% Free to Use**
+This project is fully open-source and released under the **General Public License (GPLv3)**.
+* **No Cost:** Completely free for personal and commercial use.
+* **No Subscriptions:** No hidden fees, paywalls, or "premium" tiers.
+* **No Ads:** A clean, distraction-free interface.
+* **Unlimited Conversions:** Process as many files as you need.
 ---
 
 ## ✨ Features
