@@ -14,6 +14,20 @@ You can try the application directly in your browser without installing anything
 
 ---
 
+
+## ⚠️ Disclaimer & Warranty
+
+**Please Read Carefully:**
+
+This software is provided as a "Many-to-Many" file conversion proof-of-concept.
+* **Conversion Quality:** While standard files convert well, complex documents (advanced formatting in Word, specific layers in PDF) may not render perfectly.
+* **Format Support:** Not all combinations of input/output formats are guaranteed to work.
+* **Data Safety:** This application processes files temporarily. However, **do not upload sensitive or private data** (passwords, banking info, personal IDs) to the public demo server.
+
+**THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.**
+
+---
+
 ## ✨ Features
 
 * **Document Conversion:**
@@ -83,19 +97,6 @@ You can run this project on your own computer using either Docker (recommended) 
 
 ---
 
-## ⚠️ Disclaimer & Warranty
-
-**Please Read Carefully:**
-
-This software is provided as a "Many-to-Many" file conversion proof-of-concept.
-* **Conversion Quality:** While standard files convert well, complex documents (advanced formatting in Word, specific layers in PDF) may not render perfectly.
-* **Format Support:** Not all combinations of input/output formats are guaranteed to work.
-* **Data Safety:** This application processes files temporarily. However, **do not upload sensitive or private data** (passwords, banking info, personal IDs) to the public demo server.
-
-**THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.**
-
----
-
 ## 📄 License
 
 This project is licensed under the **GNU General Public License v3.0 (GPLv3)**.
@@ -105,7 +106,6 @@ You are free to:
 * Modify the code.
 * Distribute copies.
 
-*However, if you modify this code and distribute it, you must open-source your modifications under the same license.*
 
 ---
 
