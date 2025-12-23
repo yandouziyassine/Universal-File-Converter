@@ -15,7 +15,7 @@ You can try the application directly in your browser without installing anything
 ---
 
 
-## ⚠️ Usage Limits & Disclaimer
+## ⚠️ Usage Limits
 
 **Operational Constraints:**
 To ensure optimal performance and server stability, please adhere to the following limits:
@@ -31,15 +31,7 @@ This software is provided as a "Many-to-Many" file conversion proof-of-concept.
 
 **THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.**
 
----
-## 🔓 Free & Unlimited
 
-**100% Free to Use**
-This project is fully open-source and released under the **General Public License **.
-* **No Cost:** Completely free for personal and commercial use.
-* **No Subscriptions:** No hidden fees, paywalls, or "premium" tiers.
-* **No Ads:** A clean, distraction-free interface.
-* **Unlimited Conversions:** Process as many files as you need.
 ---
 
 ## ✨ Features
@@ -54,7 +46,7 @@ This project is fully open-source and released under the **General Public Licens
     * HEIC Support (requires ImageMagick)
 * **Architecture:**
     * Clean **Service-Controller** separation.
-    * **Factory Pattern** (`ConverterFactory`) for dynamic converter selection.
+    * **Factory Pattern**  for dynamic converter selection.
     * **Dockerized** for easy deployment.
 
 ---
@@ -67,7 +59,7 @@ You can run this project on your own computer using either Docker (recommended) 
 * **Git** installed.
 * **Docker** (Recommended) OR **Java JDK 17+** and **Maven**.
 
-### Option 1: Running with Docker (Easiest)
+### Option 1: Running with Docker
 
 1.  **Clone the repository:**
     ```bash
@@ -120,6 +112,12 @@ You are free to:
 * Modify the code.
 * Distribute copies.
 
+**Please Read Carefully:**
+
+This software is provided as a "Many-to-Many" file conversion proof-of-concept.
+* **Conversion Quality:** While standard files convert well, complex documents (e.g., advanced formatting in Word, specific layers in PDF) may not render perfectly.
+* **Format Support:** Not all combinations of input/output formats are guaranteed to work or produce the desired output.
+* **Data Safety:** This application processes files temporarily. However, **do not upload sensitive or private data** (passwords, banking info, personal IDs) to the public demo server.
 
 ---
 
