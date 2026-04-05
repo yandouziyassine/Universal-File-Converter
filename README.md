@@ -4,15 +4,7 @@
 
 This application allows users to convert files between various formats (PDF, DOCX, Images) through a clean, modern web interface. It relies on a scalable **Factory Pattern** architecture to easily manage different conversion strategies.
 
----
 
-## 🚀 Live Demo
-
-You can try the application directly in your browser without installing anything:
-
-👉 **[Access Live Application](https://file-converter-production-30dd.up.railway.app/)**
-
----
 
 
 ## ⚠️ Usage Limits
